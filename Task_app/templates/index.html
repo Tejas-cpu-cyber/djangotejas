@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<div class="contain" style="margin-top:150px;">
+  <div class="col-lg-5 shadow mx-auto p-0 mt-5" style="background-color: white; border-radius: 8px;">
+    <div class="alert alert-info">
+      <h2>Welcome To Task Master App</h2>
+    </div>
+    <div class= "buttons pleft-5" style="margin-left: 90px;">
+      <button class="btn btn-info  btn-outline-success" type="submit" style="margin:20px; background-color:info;"><a style="text-decoration:none; padding:20px; color:black;"
+        href="{% url 'add_task' %}">Add Task</a></button>
+      <button class="btn btn-outline-info" type="submit" style="margin:20px;"><a style="text-decoration:none; padding:20px; color:black;"
+          href="{% url 'view_task' %}">View Task</a></button>
+    </div>
+  </div>
+</div>
+{% endblock %}

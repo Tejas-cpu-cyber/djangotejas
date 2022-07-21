@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<div class="container pt-5">
+  <div class="col-lg-5 shadow mx-auto p-0"style="background-color: white;">
+    <div class="alert alert-info">
+        <h2>Add New Task</h2>
+      </div>
+    <div class="p-4">
+      <form method="post" action="/add_task/">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <hr> 
+          <input class="btn btn-info" type="submit" value="Add Task" onclick="return confirm('Are you sure?? You want to add task')">
+      </form>
+
+    </div>      
+</div>
+</div>
+{% endblock %}

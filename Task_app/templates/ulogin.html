@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Login Page{% endblock %}
+{% block content %}
+<div class="contauner pt-4">
+  <div class="col-lg-5 shadow mx-auto p-0">
+    <div class="alert alert-info">
+      <h2>Login Account</h2>
+    </div>
+    <div class="p-4">
+      <form method="POST">
+      {% csrf_token %}
+      <label>Username</label>
+        <input type="text" name="un" placeholder="Enter Username" class="form-control" required>
+        <label>Password</label>
+        <input type="password" name="pw" placeholder="Enter password" class="form-control" required>
+        <hr>
+        <input type="submit" value="Login Account" class="btn btn-info">
+
+      </form>
+      <p style="color: red;">{{ msg }}</p>
+    </div>
+  </div>
+</div>
+  {% endblock %}

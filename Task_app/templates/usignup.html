@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Signup Page{% endblock %}
+{% block content %}
+<div class="pt-4">
+  <div class="col-lg-5 shadow mx-auto p-0">
+    <div class="alert alert-success">
+      <h2>Create Account</h2>
+    </div>
+    <div class="p-4">
+      <form method="POST">
+        {% csrf_token %}
+        <label>Username</label>
+        <input type="text" name="un" placeholder="enter username" class="form-control" required>
+        <label>Password</label>
+	<input type="password" name="pw1" placeholder="enter password" class="form-control" required>
+        <label>Confirm Password</label>
+	<input type="password" name="pw2" placeholder="confirm password" class="form-control" required>
+	<hr>
+        <input type="submit" value="Create Account" class="btn btn-success">
+      </form>
+      <p style="color: red;">{{ msg }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

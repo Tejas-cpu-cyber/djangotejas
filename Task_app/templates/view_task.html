@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<div class="col-lg-6 shadow mx-auto mt-2 " style="background-color: white;">
+    <div class="alert alert-info">
+        <h2>Your Task</h2>
+    </div>
+    <div class="p-4">
+        <button class="btn btn-info"><a href="{% url 'add_task' %}" style="text-decoration:none; color:black;">Add
+                Task</a></button>
+        <br>
+        {% if tasks|length == 0 %}
+        <div class="alert alert-info text-center" style="margin-top:10px;">
+            <p class="display-20" style="font-size:40px;">No Task Available</p>
+        </div>
+        {% else %}
+        <table class="table shadow mt-2">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Time Created</th>
+                    <th>Delete</th>
+                    <th>Change Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for task in tasks %}
+                <tr class="alert alert-info">
+                    <td>{{forloop.counter}}</td>
+                    {% if task.status == 'C' %}
+                    <td style="color:tomato; text-decoration: line-through 2px solid tomato;">{{task.title}}</td>
+                    {% else %}
+                    <td style="color:tomato;">{{task.title}}</td>
+                    {% endif %}
+                    <td style="color:green;">{{task.status}}</td>
+                    <td>{{task.priority}}</td>
+                    <td>{{task.date}}</td>
+                    <td><a href="/delete_task/{{task.id}}"
+                    onclick="return confirm('are you sure??? you want to delete the task')" class="btn btn-danger" title="delete">Delete</a></td>
+                    {% if task.status == 'C' %}
+                    <td><a href="/change_status/{{task.id}}/P" onclick="return confirm('are you sure? you are changing status from completed to pending??')" class="btn btn-success" title="delete">Change</a></td>
+                    {% else %}
+                    <td><a href="/change_status/{{task.id}}/C"  onclick="return confirm('are you sure? you are changing status from pending to compeleted??')" class="btn btn-success" title="delete">Change</a></td>
+                    {% endif %}
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
